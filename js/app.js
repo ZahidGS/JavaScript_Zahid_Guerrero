@@ -1,14 +1,37 @@
 
 
+/* *************************************************************************************
+		 _____         _               _             _                     
+		/  __ \       | |             | |           | |                    
+		| /  \/  __ _ | |  ___  _   _ | |  __ _   __| |  ___   _ __   __ _ 
+		| |     / _` || | / __|| | | || | / _` | / _` | / _ \ | '__| / _` |
+		| \__/\| (_| || || (__ | |_| || || (_| || (_| || (_) || |   | (_| |
+		 \____/ \__,_||_| \___| \__,_||_| \__,_| \__,_| \___/ |_|    \__,_|
+
+
+
+	Autor: Lic. Zahid Guerrero Sandoval		                                                                   
+		                                                                   
+************************************************************************************* */
+
+
+// PATRON MODULO AUTOEJECUTABLE
 var calculadora = ( function(){
 
+	//INICIAR VARIABLES
+    var resultado = 0;
+    var operando1 = 0;
+    var operando2 = 0;
+    var operacion = '';
 
-        var resultado = 0;
-        var operando1 = 0;
-        var operando2 = 0;
-        var operacion = '';
 
+    //*****************************************************************************
+    //FUNCIONES PARA LA CAPTURA DE NUMEROS EN EL PANEL
+    // 	DESDE NUMERO 0 HASTA EL 9 INCLUYENDO EL "."
+    //EFECTO DE PRESIONAR Y SOLTAR BOTON, CAPTURA NUMERO Y VALIDA EL CERO
+    //LLAMA A FUNCION QUE LIMITA LOS DIGITOS EN EL RESULTADO
 
+        //NUMERO CERO
     var cero = document.getElementById('0')
         cero.addEventListener('mousedown', function(){
             cero.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -17,8 +40,8 @@ var calculadora = ( function(){
             cero.setAttribute("style", "transform:scale(1,1)")
         })
         cero.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 0;
@@ -29,8 +52,7 @@ var calculadora = ( function(){
         })
 
 
-	
-
+        //NUMERO UNO
     var uno = document.getElementById('1')
         uno.addEventListener('mousedown', function(){
             uno.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -39,8 +61,8 @@ var calculadora = ( function(){
             uno.setAttribute("style", "transform:scale(1,1)")
         })
         uno.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 1;
@@ -51,7 +73,7 @@ var calculadora = ( function(){
         })
 
 
-
+        //NUMERO DOS
     var dos = document.getElementById('2')
         dos.addEventListener('mousedown', function(){
             dos.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -60,8 +82,8 @@ var calculadora = ( function(){
             dos.setAttribute("style", "transform:scale(1,1)")
         })
         dos.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 2;
@@ -73,7 +95,7 @@ var calculadora = ( function(){
 
 
 
-
+        //NUMERO TRES
     var tres = document.getElementById('3')
         tres.addEventListener('mousedown', function(){
             tres.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -82,8 +104,8 @@ var calculadora = ( function(){
             tres.setAttribute("style", "transform:scale(1,1)")
         })
         tres.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 3;
@@ -95,7 +117,7 @@ var calculadora = ( function(){
 
 
 
-
+        //NUMERO CUATRO
     var cuatro = document.getElementById('4')
         cuatro.addEventListener('mousedown', function(){
             cuatro.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -104,8 +126,8 @@ var calculadora = ( function(){
             cuatro.setAttribute("style", "transform:scale(1,1)")
         })
         cuatro.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 4;
@@ -117,7 +139,7 @@ var calculadora = ( function(){
 
 
 
-
+        //NUMERO CINCO
     var cinco = document.getElementById('5')
         cinco.addEventListener('mousedown', function(){
             cinco.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -126,8 +148,8 @@ var calculadora = ( function(){
             cinco.setAttribute("style", "transform:scale(1,1)")
         })
         cinco.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 5;
@@ -139,7 +161,7 @@ var calculadora = ( function(){
 
 
 
-
+        //NUMERO SEIS
     var seis = document.getElementById('6')
         seis.addEventListener('mousedown', function(){
             seis.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -148,8 +170,8 @@ var calculadora = ( function(){
             seis.setAttribute("style", "transform:scale(1,1)")
         })
         seis.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 6;
@@ -161,7 +183,7 @@ var calculadora = ( function(){
 
 
 
-
+        //NUMERO SIETE
     var siete = document.getElementById('7')
         siete.addEventListener('mousedown', function(){
             siete.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -170,8 +192,8 @@ var calculadora = ( function(){
             siete.setAttribute("style", "transform:scale(1,1)")
         })
         siete.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 7;
@@ -182,7 +204,7 @@ var calculadora = ( function(){
         })
 
 
-
+        //NUMERO OCHO
     var ocho = document.getElementById('8')
         ocho.addEventListener('mousedown', function(){
             ocho.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -191,8 +213,8 @@ var calculadora = ( function(){
             ocho.setAttribute("style", "transform:scale(1,1)")
         })
         ocho.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 8;
@@ -203,7 +225,7 @@ var calculadora = ( function(){
         })
 
 
-
+        //NUMERO NUEVE
     var nueve = document.getElementById('9')
         nueve.addEventListener('mousedown', function(){
             nueve.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -212,8 +234,8 @@ var calculadora = ( function(){
             nueve.setAttribute("style", "transform:scale(1,1)")
         })
         nueve.addEventListener('click', function(){
-        	var valida = maximo();
-            if (valida==false) {
+        	var validaDigitos = maximoDigitos();
+            if (validaDigitos==false) {
             var obtenerValor = document.getElementById('display').innerHTML;
             if (obtenerValor=='0') {
                 document.getElementById('display').innerHTML = 9;
@@ -224,20 +246,27 @@ var calculadora = ( function(){
         })
 
 
-
-    var on = document.getElementById('on')
-        on.addEventListener('mousedown', function(){
-            on.setAttribute("style", "transform:scale(0.95,0.95)")
+        //PUNTO, CAPTURA EL PUNTO Y VALIDA QUE NO SE REPITA 
+    var punto = document.getElementById('punto')
+        punto.addEventListener('mousedown', function(){
+            punto.setAttribute("style", "transform:scale(0.95,0.95)")
         })
-        on.addEventListener('mouseup', function(){
-            on.setAttribute("style", "transform:scale(1,1)")
+        punto.addEventListener('mouseup', function(){
+            punto.setAttribute("style", "transform:scale(1,1)")
         })
-        on.addEventListener('click', function(){
-            resetear();
-            document.getElementById('display').innerHTML = '0';
+        punto.addEventListener('click', function(){
+            var obtenerValor = document.getElementById('display').innerHTML;
+            if (obtenerValor.indexOf('.')==-1) {
+            document.getElementById('display').innerHTML = obtenerValor + '.';
+            }
         })
 
 
+
+	//******************************************************************************
+	// OPERATIVIDAD
+
+	// FUNCIONES ARITMETICAS
 
 
     var dividir = document.getElementById('dividido')
@@ -286,35 +315,6 @@ var calculadora = ( function(){
 
 
 
-    var punto = document.getElementById('punto')
-        punto.addEventListener('mousedown', function(){
-            punto.setAttribute("style", "transform:scale(0.95,0.95)")
-        })
-        punto.addEventListener('mouseup', function(){
-            punto.setAttribute("style", "transform:scale(1,1)")
-        })
-        punto.addEventListener('click', function(){
-            var obtenerValor = document.getElementById('display').innerHTML;
-            if (obtenerValor.indexOf('.')==-1) {
-            document.getElementById('display').innerHTML = obtenerValor + '.';
-            }
-        })
-
-
-
-    var signo = document.getElementById('sign')
-        signo.addEventListener('mousedown', function(){
-            signo.setAttribute("style", "transform:scale(0.95,0.95)")
-        })
-        signo.addEventListener('mouseup', function(){
-            signo.setAttribute("style", "transform:scale(1,1)")
-        })
-        signo.addEventListener('click', function(){
-            var obtenerValor = document.getElementById('display').innerHTML;
-            obtenerValor = parseFloat(obtenerValor)*-1;
-            document.getElementById('display').innerHTML = obtenerValor.toString();
-        })
-
 
     var raiz = document.getElementById('raiz')
         raiz.addEventListener('mousedown', function(){
@@ -342,6 +342,9 @@ var calculadora = ( function(){
         })
 
 
+        //TECLA IGUAL, COMPLETA LA OPERACION Y REPITE LA ULTIMA OPERACION
+        //CON EL ULTIMO NUMERO
+        //LIMITA LA CANTIDAD DE DIGITOS A 8
     var igual = document.getElementById('igual')
         igual.addEventListener('mousedown', function(){
             igual.setAttribute("style", "transform:scale(0.95,0.95)")
@@ -364,6 +367,44 @@ var calculadora = ( function(){
         })
     
 
+	// TECLA DE REINICIO DE OPERACIONES / EFECTO DE PRESIONAR Y SOLTAR TECLA
+    var on = document.getElementById('on')
+        on.addEventListener('mousedown', function(){
+            on.setAttribute("style", "transform:scale(0.95,0.95)")
+        })
+        on.addEventListener('mouseup', function(){
+            on.setAttribute("style", "transform:scale(1,1)")
+        })
+        on.addEventListener('click', function(){
+            resetear();
+            document.getElementById('display').innerHTML = '0';
+        })
+
+
+        // TECLA PARA CAMBIAR DE SIGNO A - Y +  
+        // EFECTO DE PRESIONAR Y SOLTAR TECLA
+    var signo = document.getElementById('sign')
+        signo.addEventListener('mousedown', function(){
+            signo.setAttribute("style", "transform:scale(0.95,0.95)")
+        })
+        signo.addEventListener('mouseup', function(){
+            signo.setAttribute("style", "transform:scale(1,1)")
+        })
+        signo.addEventListener('click', function(){
+            var obtenerValor = document.getElementById('display').innerHTML;
+            obtenerValor = parseFloat(obtenerValor)*-1;
+            document.getElementById('display').innerHTML = obtenerValor.toString();
+        })
+
+
+        //******************************************************************************
+
+        //METODOS
+
+
+        //REALIZA LA OPERACION ARITMETICA SI EL ULTIMO NUMERO ES "0" O DIFERENTE
+        //PARA CONTINUAR CON LA SECUENCIA DE OPERACIONES
+        //IMPRIME EL RESULTADO EN EL ELEMENTO 
     function resolver(){
         if (resultado==0) {
 	        switch(operacion){
@@ -400,7 +441,7 @@ var calculadora = ( function(){
     }
     
 
-
+    //REINICIA VALORES
     function resetear(){
 
         resultado = 0;
@@ -409,7 +450,9 @@ var calculadora = ( function(){
         operacion = '';
     }	
 
-	var maximo = (function(){
+
+    //VALIDA QUE NO EXCEDA DE OCHO DIGITOS EN EL ELEMENTO SPAN
+	var maximoDigitos = (function(){
 	 var texto = document.getElementById('display').innerHTML.length;
 	 if(texto>=8){
 	    alert('excedio 8 digitos, son ' + texto);
